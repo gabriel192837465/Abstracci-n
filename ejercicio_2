@@ -1,0 +1,27 @@
+from abc import ABC, abstractmethod
+
+class Pago(ABC):
+    @abstractmethod
+    def procesar_pago(self):
+        pass
+    
+
+class Paypal(Pago):
+    def procesar_pago(self):
+        return "Su pago con Paypal fue realizado"
+    
+class tarjetaDeCredito(Pago):
+    def procesar_pago(self):
+        return "Su pago con tarjeta de credito fue realizado"
+    
+if __name__ == "__main__":
+    r = int(input("Presione 1 para pagar con Paypal o 2 para pagar con tarjeta de credito: "))
+    
+    if (r == 1):
+        pago = Paypal()
+        print(pago.procesar_pago())
+    elif(r == 2):
+        pago = tarjetaDeCredito()
+        print(pago.procesar_pago())
+    else:
+        print("ingreso incorrecto")
