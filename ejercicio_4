@@ -1,0 +1,29 @@
+from abc import ABC, abstractmethod
+
+class Notificacion(ABC):
+    @abstractmethod 
+    def enviar():
+        pass
+    
+class Email(Notificacion):
+    def enviar(self, mensaje):
+        return (f"Enviando por email: ({mensaje})")
+    
+class SMS (Notificacion):
+    def enviar(self, mensaje):
+        return (f"Enviando por SMS: ({mensaje})")
+    
+    
+if __name__ == "__main__":
+    r = int(input("Presione 1 para mandar un Email o 2 para mandar un SMS: "))
+    
+    if (r == 1):
+        email = Email()
+        mensaje = input("Ingrese su mensaje: ")
+        print(email.enviar(mensaje))
+    elif (r == 2):
+        sms = SMS()
+        mensaje = input("Ingrese su mensaje: ")
+        print(sms.enviar(mensaje))
+    else:
+        print("ingreso incorrecto")
