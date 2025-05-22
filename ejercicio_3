@@ -1,0 +1,41 @@
+from abc import ABC, abstractmethod
+
+class Figura(ABC):
+    @abstractmethod
+    def calcular_area(self):
+        pass
+    
+class Circulo(Figura):
+    def __init__(self, radio):
+        self._radio = radio
+    
+    def calcular_area(self):
+        area = 3.1416 * self._radio
+        return area
+    
+class Rectangulo(Figura):
+    def __init__(self, ancho, altura):
+        self._ancho = ancho
+        self._altura = altura
+        
+    def calcular_area(self):
+        area = self._ancho * self._altura
+        return area
+    
+if __name__ == "__main__":
+    r = int(input("Presione 1 para calcular el area de un circulo o 2 para la de un rectangulo: "))
+    
+    if (r == 1):
+        radio = int(input("Ingrese el radio del circulo: "))
+        circulo = Circulo(radio)
+        circulo.calcular_area()
+        print(f"Area: {circulo.calcular_area()}")
+        
+    elif(r == 2):
+        ancho = int(input("Ingrese el ancho del rectangulo: "))
+        alto = int(input("Ingrese la altura del rectangulo: "))
+        rectangulo = Rectangulo(ancho, alto)
+        print(f"Area: {rectangulo.calcular_area()}")
+    
+    else:
+        print("Ingreso incorrecto")
